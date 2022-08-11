@@ -24,3 +24,9 @@ function makeColumns(cellNum) {
 };
 
 defaultGrid(16);
+
+for(const cell of cells){
+    cell.addEventListener('mouseover', function hover(){
+        cell.setAttribute('style', 'background: black;')
+    })
+}
