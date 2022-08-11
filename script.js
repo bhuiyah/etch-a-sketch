@@ -1,6 +1,13 @@
 const container = document.getElementById("container");
 let rows = document.getElementsByClassName("gridRow");
 let cells = document.getElementsByClassName("cell");
+let size = document.querySelector('#size');
+let clear = document. querySelector('#clear');
+let theContainer = document.querySelector('#container');
+let inputSize;
+
+
+
 
 function defaultGrid(num) {
     makeRows(num);
@@ -23,10 +30,28 @@ function makeColumns(cellNum) {
     };
 };
 
-defaultGrid(16);
+size.addEventListener('click',() =>{
+    const rows = document.querySelectorAll('.gridRow');
+    for(const row of rows){
+        theContainer.removeChild(row);
+    }
+    inputSize = prompt("Enter a Grid Size");
+    if(inputSize <= 64){
+        defaultGrid(inputSize);
+        for(const cell of cells){
+            cell.addEventListener('mouseover', function hover(){
+                cell.classList.add('hovered');
+            })
+        }  
+    }
+    else{
+        alert("Try a Lower Number")
+    }
+})
 
-for(const cell of cells){
-    cell.addEventListener('mouseover', function hover(){
-        cell.setAttribute('style', 'background: black;')
-    })
-}
+clear.addEventListener('click', ()=>{
+    for(const cell of cells){
+        cell.classList.remove('hovered');
+    }
+})
+
