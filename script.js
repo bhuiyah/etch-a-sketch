@@ -19,6 +19,10 @@ function makeRows(rowNum) {
         let row = document.createElement("div");
         container.appendChild(row).className = "gridRow";
     };
+    for(row of rows){
+        let percent = 1/rowNum*100;
+        row.setAttribute('style', 'height:' +percent+'%');
+    }
 };
 
 function makeColumns(cellNum) {
